@@ -1,3 +1,4 @@
+// Create variables through HTML elements
 var quiz = document.getElementById("quiz");
 var prequiz = document.getElementById("prequiz");
 var choiceA = document.getElementById("a");
@@ -17,7 +18,7 @@ var finishQuizEl = document.getElementById("finishQuiz");
 var submit = document.getElementById("submit-score");
 var showScoreEl = document.getElementById("score-score");
 
-
+// Quiz questions
 var quizQuestions = [
     {
         question: "Commonly used data types DO NOT include:",
@@ -69,6 +70,7 @@ var quizQuestions = [
     },
     ];
 
+// Other variables
 var finalQuestion = quizQuestions.length;
 var currentQuestionSpot = 0;
 var timeLeft = 76;
@@ -76,6 +78,7 @@ var timeInterval;
 var score = 0;
 var correct;
 
+// Create questions and answers from quiz question object array
 function beginQuiz(){
     endQuiz.style.display = "none";
     if (currentQuestionSpot === finalQuestion){
@@ -89,7 +92,7 @@ function beginQuiz(){
     choiceD.innerHTML = currentQuestion.optionD;
 };
 
-
+// Starts quiz and timer
 function startQuiz(){
    endQuiz.style.display = "none";
    prequiz.style.display = "none";
@@ -108,6 +111,7 @@ function startQuiz(){
     quiz.style.display = "block";
 }
 
+// Check if user answers are correct
 function checkAnswer(answer){
     correct = quizQuestions[currentQuestionSpot].rightAnswer;
 
@@ -125,6 +129,7 @@ function checkAnswer(answer){
     }
 }
 
+// Display score when finished with questions or if timer runs out
 function finalScore(){
     quiz.style.display = "none"
     endQuiz.style.display = "flex";
@@ -133,7 +138,7 @@ function finalScore(){
     finalScoreEl.innerHTML = "You got " + score + " out of " + quizQuestions.length + " correct!";
 }
 
-
+// Saves high scores in local storage and displays
 submit.addEventListener("click", function highscore(){
     
     
@@ -160,6 +165,7 @@ submit.addEventListener("click", function highscore(){
     }
 });
 
+// Creates new high score list
 function createHighscores(){
     highscoreName.innerHTML = "";
     showScoreEl.innerHTML = "";
@@ -173,7 +179,8 @@ function createHighscores(){
         showScoreEl.appendChild(newScore);
     }
 }
- 
+
+// High score page
 function displayHighScore(){
     endQuiz.style.display = "none";
     highscoreContainer.style.display = "flex";
@@ -184,14 +191,14 @@ function displayHighScore(){
     createHighscores();
 }
 
-
+// Clear scores from high scores and local storage
 function clearScore(){
     window.localStorage.clear();
     highscoreName.textContent = "";
     showScoreEl.textContent = "";
 }
 
-
+// Retake quiz function
 function retakeQuiz(){
     highscoreContainer.style.display = "none";
     endQuiz.style.display = "none";
@@ -201,5 +208,5 @@ function retakeQuiz(){
     startQuiz();
 }
 
-
+// Click button to start quiz
 startBtn.addEventListener("click",startQuiz);

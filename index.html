@@ -17,7 +17,7 @@
         <button id="startbutton">Start Quiz</button>
         <button id="highscoreButton" onclick="displayHighScore()">High Scores</button>
         </div>
-
+        <!--Quiz questions and timer-->
         <div id="quiz">
             <div id="timer">Time Remaining: </div>
                 <div id="questions"></div>
@@ -27,8 +27,9 @@
                     <button id="d" onclick="checkAnswer('d')">D</button>
                 <div id="result"></div>
         </div>
+        <!-- Post-quiz content -->
         <div id="endQuiz">
-
+        <!-- Input users name to display with score -->
             <div id="finalScore"></div>
             <input type="text" size = "30" placeholder="Enter your name to see your high score!" name="name" id="name"/>
             <button id="submit-score">Submit Score</button>
@@ -43,6 +44,7 @@
             <div id ="score-score"></div>
         </div>
         <div id="finishQuiz">
+            <!-- Click buttons to retake quiz or clear high scores-->
             <button id="try-again" onclick="retakeQuiz()">Take Again</button>
             <button id="clear-score" onclick="clearScore()">Clear Highscores</button>
         </div>

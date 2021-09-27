@@ -1,8 +1,9 @@
-*{
+:root{
     background-color: black;
     color: white;
     }
     
+    /* styling for quiz questions */
     p{
         color: white;
         text-shadow: .5px .5px white;
@@ -11,12 +12,15 @@
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     
     }
+
+    /* start page title styling */
     h2, h3{
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin-top: 3px;
         color: white;
         font-size: 25px;
     }
+
     input{
         text-align: center;
     }
@@ -138,6 +142,7 @@
         display: none;
     }
 
+    /* Styling for high score list */
     li{
         list-style: none;
     }
