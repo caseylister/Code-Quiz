@@ -141,7 +141,47 @@ submit.addEventListener("click", function highscore(){
         createHighscores();
 
     }
-    
 });
+
+function createHighscores(){
+    highscoreName.innerHTML = "";
+    showScoreEl.innerHTML = "";
+    var highscores = JSON.parse(localStorage.getItem("storeHighscore")) || [];
+    for (i=0; i<highscores.length; i++){
+        var newName = document.createElement("li");
+        var newScore = document.createElement("li");
+        newName.textContent = highscores[i].name;
+        newScore.textContent = highscores[i].score;
+        highscoreName.appendChild(newName);
+        showScoreEl.appendChild(newScore);
+    }
+}
+ 
+function displayHighScore(){
+    endQuiz.style.display = "none";
+    highscoreContainer.style.display = "flex";
+    highscorePage.style.display = "block";
+    finishQuizEl.style.display = "flex";
+    prequiz.style.display = "none";
+
+    createHighscores();
+}
+
+
+function clearScore(){
+    window.localStorage.clear();
+    highscoreName.textContent = "";
+    showScoreEl.textContent = "";
+}
+
+
+function retakeQuiz(){
+    highscoreContainer.style.display = "none";
+    endQuiz.style.display = "none";
+    timeLeft = 76;
+    score = 0;
+    currentQuestionSpot = 0;
+    startQuiz();
+}
 
 startBtn.addEventListener("click",startQuiz);
