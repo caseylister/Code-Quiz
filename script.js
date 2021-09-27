@@ -75,3 +75,37 @@ var timeLeft = 76;
 var timeInterval;
 var score = 0;
 var correct;
+
+function beginQuiz(){
+    endQuiz.style.display = "none";
+    if (currentQuestionSpot === finalQuestion){
+        return finalScore();
+    } 
+    var currentQuestion = quizQuestions[currentQuestionSpot];
+    questionsEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
+    choiceA.innerHTML = currentQuestion.optionA;
+    choiceB.innerHTML = currentQuestion.optionB;
+    choiceC.innerHTML = currentQuestion.optionC;
+    choiceD.innerHTML = currentQuestion.optionD;
+};
+
+
+function startQuiz(){
+   endQuiz.style.display = "none";
+   prequiz.style.display = "none";
+   beginQuiz();
+
+
+    timeInterval = setInterval(function() {
+        timeLeft--;
+        timer.textContent = "Time left: " + timeLeft;
+    
+        if(timeLeft === 0) {
+          clearInterval(timeInterval);
+          finalScore();
+        }
+      }, 1000);
+    quiz.style.display = "block";
+}
+
+startBtn.addEventListener("click",startQuiz);
