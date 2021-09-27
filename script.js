@@ -108,4 +108,40 @@ function startQuiz(){
     quiz.style.display = "block";
 }
 
+function finalScore(){
+    quiz.style.display = "none"
+    endQuiz.style.display = "flex";
+    clearInterval(timeInterval);
+    scoreName.value = "";
+    finalScoreEl.innerHTML = "You got " + score + " out of " + quizQuestions.length + " correct!";
+}
+
+
+submit.addEventListener("click", function highscore(){
+    
+    
+    if(scoreName.value === "") {
+        alert("Name cannot be blank");
+        return false;
+    }else{
+        var storeHighscore = JSON.parse(localStorage.getItem("storeHighscore")) || [];
+        var currentUser = scoreName.value.trim();
+        var currentHighscore = {
+            name : currentUser,
+            score : score
+        };
+    
+        endQuiz.style.display = "none";
+        highscoreContainer.style.display = "flex";
+        highscorePage.style.display = "block";
+        finishQuizEl.style.display = "flex";
+        
+        storeHighscore.push(currentHighscore);
+        localStorage.setItem("storeHighscore", JSON.stringify(storeHighscore));
+        createHighscores();
+
+    }
+    
+});
+
 startBtn.addEventListener("click",startQuiz);
