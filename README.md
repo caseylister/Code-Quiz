@@ -14,6 +14,13 @@ GIVEN I am taking a code quiz
   - THEN I can save my initials and score
   
 ## Screenshots
+![Code Quiz Start Page](./quiz1.png)
+
+![Code Quiz](./quiz2.png)
+
+![Submit Score Page](./quiz3.png)
+
+![High Score Page](./quiz4.png)
 
 ## Link
 https://caseylister.github.io/Code-Quiz/
