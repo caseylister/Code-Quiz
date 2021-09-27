@@ -108,6 +108,23 @@ function startQuiz(){
     quiz.style.display = "block";
 }
 
+function checkAnswer(answer){
+    correct = quizQuestions[currentQuestionSpot].rightAnswer;
+
+    if (answer === correct && currentQuestionSpot !== finalQuestion){
+        score++;
+        alert("That Is Correct!");
+        currentQuestionSpot++;
+        beginQuiz();
+    }else if (answer !== correct && currentQuestionSpot !== finalQuestion){
+        alert("That Is Incorrect.")
+        currentQuestionSpot++;
+        beginQuiz();
+    }else{
+        finalScore();
+    }
+}
+
 function finalScore(){
     quiz.style.display = "none"
     endQuiz.style.display = "flex";
@@ -183,5 +200,6 @@ function retakeQuiz(){
     currentQuestionSpot = 0;
     startQuiz();
 }
+
 
 startBtn.addEventListener("click",startQuiz);
